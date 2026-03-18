@@ -1,78 +1,85 @@
-# The School Fees Crisis in Numbers
+# The School Fees Problem in Numbers
 
-## Overview
+## How Big Is This?
 
-School fees are the single largest recurring financial obligation for low-income Kenyan families - larger than rent, food, or healthcare. The payment structure (lump-sum at the start of each term, three times per year) creates a predictable financial crisis that drives millions of families into debt every January, May, and September.
+Kenya has approximately 90,000 primary and secondary schools - public and private - serving over 15 million students. Every year, three fee payment deadlines create three cash flow crises: January (Term 1), May (Term 2), September (Term 3).
 
-## Key Data Points
+## What Do Fees Actually Cost?
 
-### Scale of the Problem
+| School type | Typical termly fees | Annual total |
+|-------------|-------------------|--------------|
+| Public primary (FPE) | KES 2,000–5,000 (lunch, uniforms, exams, levies) | KES 6,000–15,000 |
+| Public secondary (day) | KES 9,000–15,000 | KES 27,000–45,000 |
+| Public secondary (boarding) | KES 40,000–55,000 | KES 120,000–165,000 |
+| Low-cost private primary | KES 5,000–15,000 | KES 15,000–45,000 |
+| Mid-range private | KES 20,000–50,000 | KES 60,000–150,000 |
 
-- **Kenya has approximately 90,000+ primary and secondary schools** (public and private combined)
-- **Over 15 million students are enrolled** in basic education
-- **Three fee payment deadlines per year**: January (Term 1), May (Term 2), September (Term 3)
-- Fee amounts vary widely:
-  - Public primary: Largely free under Free Primary Education (FPE), but parents still pay for lunch, uniforms, exams, and "development" levies - typically KES 2,000–5,000/term
-  - Public secondary (day): KES 9,000–15,000/term
-  - Public secondary (boarding): KES 40,000–55,000/term
-  - Low-cost private primary: KES 5,000–15,000/term
-  - Mid-range private: KES 20,000–50,000/term
+Free Primary Education (FPE) eliminated official tuition at public primaries, but parents still pay significant amounts through levies, lunch programmes, exam fees, and development contributions. The "free" label masks real costs that low-income families struggle to meet.
 
-### The Payment Behaviour Problem
+## The Cash Flow Mismatch
 
-- **Majority of parents do not pay in full at the start of term.** Schools report that only 20–40% of expected fees are collected in the first two weeks of term.
-- **Fee collection stretches across the entire term**, with schools often still chasing payments in the final weeks.
-- **"Sent home" practice**: Children are routinely sent home mid-term for unpaid fees. Estimates suggest 1 in 4 students in low-cost schools are sent home at least once per year for fee arrears.
-- **Peak borrowing periods** coincide exactly with term openings. Digital lenders (Tala, Branch, Fuliza) see usage spikes in January, May, and September.
+### The school's side
+Schools - especially private and semi-private ones - have fixed costs that hit on Day 1 of term: teacher salaries, rent, food supplies, utilities, learning materials. They need cash immediately. But fee collection follows a long tail:
 
-### The Debt Trap
+- **Week 1**: Typically 20–35% of expected fees collected
+- **Week 4**: 55–70% collected
+- **End of term**: 85–95% collected (some balance always rolls over)
 
-- Parents who cannot pay fees on time resort to:
-  - **Digital lenders**: Tala, Branch, and Fuliza charge 7.5–15% per month on short-term loans
-  - **Informal lenders (shylocks)**: 10–20% monthly interest, often with ID confiscation as collateral
-  - **Employer salary advances**: Common but creates dependency and reduces future take-home pay
-  - **Chama borrowing**: Interest-free but limited in amount and creates social obligation
-  - **Selling assets**: Livestock, household goods, or business inventory liquidated to cover fees
+The gap between what schools need and what they've collected in Week 1 is the operational crisis that drives the "send them home" practice.
 
-### What Exists Today
+### The parent's side
+Most parents in low-cost and public schools earn informally or on low formal salaries. They don't have KES 15,000 sitting in their M-Pesa on January 6th. The money comes in daily or weekly - KES 500 here, KES 1,200 there - and gets consumed by rent, food, transport, and emergencies before it can accumulate into a fee-sized lump sum.
 
-| Solution                                      | How it works                                                   | Limitation                                                         |
-| --------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------ |
-| **Fuliza**                                    | Overdraft on M-Pesa, instant access                            | Not purpose-built for fees; easy to divert; 1.083% daily interest  |
-| **Tala/Branch**                               | Phone-data-underwritten personal loans                         | High interest (15%+/month effective); not school-integrated        |
-| **HELB**                                      | Government student loan for higher education                   | Only covers university/TVET, not primary/secondary                 |
-| **School fee insurance** (e.g., Britam Elimu) | Insurance product that pays fees if parent dies or is disabled | Doesn't help with regular payment; low uptake                      |
-| **Chamas/merry-go-rounds**                    | Group savings with rotating payouts                            | Timing doesn't always align with term dates; limited to group size |
-| **Bursaries**                                 | Government/CDF/NGO fee subsidies                               | Oversubscribed; bureaucratic; unreliable timing                    |
+This isn't financial irresponsibility. It's arithmetic. When your daily income roughly equals your daily expenses, accumulating a large sum requires either a windfall or a loan.
 
-### What Doesn't Exist
+## How Parents Currently Cover the Gap
 
-**A structured, school-integrated micro-savings product that helps parents accumulate fees in small amounts between terms, using existing payment infrastructure (M-Pesa paybill), with behavioural nudging and progress tracking.**
+| Method | Estimated usage | Cost to parent | Problem |
+|--------|----------------|----------------|---------|
+| Pay in informal instalments (negotiate with school) | Very common | Free, but undignified and unreliable | Verbal, no system, child may be sent home anyway |
+| Borrow from chama/merry-go-round | Common | Low/zero interest | Limited amounts, timing may not align with term dates |
+| Salary advance from employer | Common for formal employees | Reduces future take-home pay | Creates dependency cycle |
+| Digital lender (Tala, Branch, Fuliza) | Growing | 7.5–15%+ per month effective | Expensive, not purpose-locked, can trigger debt spiral |
+| Informal lender (shylock) | Common in low-income areas | 10–20% monthly interest, often with ID confiscation | Predatory, dangerous, humiliating |
+| Sell assets (livestock, inventory, household items) | Seasonal / desperation | Permanent loss of productive assets | Destroys future earning capacity |
+| Keep child home until money is available | Common but underreported | Lost learning days | Devastating to child's education and wellbeing |
 
-## Why the Inter-Term Period Matters
+## The "Sent Home" Practice
 
-The typical Kenyan school calendar:
+There are no reliable national statistics on how many children are sent home for fee arrears each year. The practice is widespread but largely undocumented because schools don't report it and the government officially discourages it (especially in public schools where fees are subsidised).
 
-- Term 1: January – March (holidays: ~3 weeks in April)
-- Term 2: May – July (holidays: ~4 weeks in August)
-- Term 3: September – November (holidays: ~5 weeks in December)
+What we know:
+- Media reports and education NGOs consistently describe it as one of the most common disruptions to learning in Kenyan schools
+- It disproportionately affects children from the poorest households
+- It peaks in the first 2–3 weeks of each term
+- Some schools use it as a deliberate collection tactic - the child goes home, the parent panics, and finds money somehow
+- Research links fee-related absenteeism to lower academic performance, higher dropout rates, and psychological distress
 
-The inter-term holidays are 3–5 weeks long. This is when parents _should_ be accumulating money for next term's fees. But without structure, any money earned during holidays gets absorbed into daily expenses. By the time term starts, they have nothing saved.
+**This is the human cost that sits behind the cash flow numbers.**
 
-**The product opportunity is in this gap** —> the 3–5 weeks between terms where a daily KES 200–500 save toward the school paybill could cover 30–70% of the next term's fees before the deadline hits.
+## The Zeraki Opportunity
 
-## Research Gaps (To Investigate)
+Zeraki Finance is inside 4,000+ schools. At a conservative average of 300 students per school, that's 1.2 million students - and roughly 800,000–1,000,000 parent accounts (accounting for siblings).
 
-- [ ] Exact percentage of Zeraki Finance schools that use M-Pesa paybill for fee collection vs. bank deposit
-- [ ] Average number of fee payment transactions per parent per term (to understand existing chunking behaviour)
-- [ ] Zeraki Finance's current SMS delivery rates and parent engagement metrics
-- [ ] School administrators' willingness to allow inter-term pre-payments and how reconciliation works
-- [ ] Regulatory position on automated SMS nudging for financial behaviour (consumer protection angle)
+If even 20% of those parents would benefit from a structured instalment plan, and 5% would use a fee top-up credit product, the addressable market within Zeraki's existing base is:
+
+- **Layer 1 (Plans)**: ~160,000–200,000 parents
+- **Layer 2 (Credit)**: ~40,000–50,000 parents per term
+
+At an average top-up loan of KES 4,000 and a 5% origination fee, Layer 2 alone represents KES 8M–10M in potential revenue per term from Zeraki's existing school base - before any expansion.
+
+## Research Gaps
+
+- [ ] Validate fee collection timeline (Week 1, Week 4, end-of-term percentages) with actual Zeraki Finance data from pilot schools
+- [ ] Survey 10–20 parents on their actual fee payment journey - how they fund it, what they borrow, what it costs them
+- [ ] Interview 5–10 school bursars on the informal arrangement system - how many parents negotiate, what percentage honour commitments
+- [ ] Quantify the "sent home" practice - frequency, duration, and how schools decide who gets sent home vs who gets grace
+- [ ] Check whether any Kenyan schools currently offer formal instalment plans (and if so, how they manage them)
 
 ## Sources
 
-- Kenya National Bureau of Statistics (KNBS) — Education sector data
-- Ministry of Education fee guidelines
-- FSD Kenya — Financial inclusion reports
-- Zeraki public disclosures (TechCrunch, Safaricom Newsroom interviews)
-- CBK Digital Credit Providers regulations
+- Kenya Ministry of Education - fee guidelines and FPE policy
+- Kenya National Bureau of Statistics - household expenditure data
+- FSD Kenya - financial inclusion and household financial management research
+- Zeraki public disclosures (TechCrunch Dec 2022, Safaricom Newsroom, Save the Children)
+- CBK - Digital Credit Providers regulations
