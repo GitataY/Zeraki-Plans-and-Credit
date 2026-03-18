@@ -1,66 +1,104 @@
-# Zeraki Savings: Embedded School Fee Savings for Kenya
+# Zeraki Plans & Credit: Embedded Fee Management for Kenyan Schools
 
-> A product case study exploring how Zeraki - Kenya's largest school management platform - could embed a micro-savings and fee financing product for parents, using existing payment infrastructure and behavioural nudging to turn the school fees crisis from a termly emergency into a manageable daily habit.
+> Kenyan schools already let parents pay fees in instalments. The headteacher negotiates at the gate, the bursar scribbles in a notebook, and children get sent home when the informal system breaks down. This case study explores how Zeraki - already inside 4,000+ schools - could formalise what's already happening and layer affordable credit on top for parents who need it.
 
-## Why This Exists
+## The Problem (It's Not What You Think)
 
-School fees are the single biggest financial stressor for low-income Kenyan families. Every January, May, and September, millions of parents scramble to pay - borrowing from shylocks at 20%+ monthly interest, pulling children out of school, or going into debt spirals. Meanwhile, Zeraki already sits inside 4,000+ schools with fee tracking, parent communication, and payment data. The infrastructure exists. The data exists. The product doesn't - yet.
+Parents don't forget school fees exist. Every parent in Kenya knows the dates: January, May, September. The problem is:
 
-This repo is a full product case study: research, PRD, user stories, technical architecture, and go-to-market strategy for an embedded savings and fee financing product built on top of Zeraki's existing platform.
+- **Schools need cash on Day 1** to pay teachers, buy supplies, and operate - but fees trickle in over 8-12 weeks
+- **Parents earn in small, irregular amounts** and can't accumulate a lump sum by the deadline
+- **The informal arrangement system is invisible and undignified** - parents negotiate verbally, agreements live in someone's memory, and children are sent home when the system fails
+- **When parents borrow to cover the gap**, they pay 15-20%+ monthly interest to digital lenders or shylocks
+
+The child who gets pulled out of class and sent home isn't experiencing a financial event. They're experiencing a humiliation that affects their learning, their confidence, and their relationship with school.
+
+## What Zeraki Already Has
+
+Zeraki Finance is an accounting tool used by 4,000+ Kenyan schools. It tracks fee balances, processes receipts, monitors expenses, tracks pledges, and sends SMS fee reminders to parents. Parents can view balances through the Zeraki app.
+
+**What it doesn't do:** structured instalment plans, payment behaviour analysis, predictive collection forecasting, or credit products. The data to power all of this already exists in the system. It's just not being used.
+
+Zeraki's CEO has publicly stated they plan to build "payment products on the parents' side." This case study is a blueprint for what those products could look like.
+
+## The Product: Two Layers
+
+### Layer 1 - Zeraki Plans: Formalised Fee Instalment Arrangements
+
+Replace the informal, verbal, gate-negotiation system with structured payment plans managed through Zeraki Finance.
+
+**For parents**: Select a payment plan at the start of term (e.g., 4 weekly instalments). No begging, no negotiating, no performing poverty at the school gate. If you're on a plan and making payments, your child stays in school.
+
+**For schools**: A dashboard showing which parents are on plans, who's on track, who's behind - replacing 150 individual verbal negotiations with a system. The bursar stops being a debt collector and starts being an administrator.
+
+**For children**: They stay in school. That's the point.
+
+### Layer 2 - Zeraki Credit: Top-Up Financing for Parents Who Need It
+
+Life happens. A parent who's paid on time for 6 straight terms suddenly can't this term - a hospital bill, a funeral, a job loss. Another parent has been on an instalment plan, made 3 of 4 payments, and then hit a wall in the final week. Both deserve affordable credit. Neither should have to borrow from a shylock at 20% interest.
+
+Layer 2 serves **two groups**:
+- **Historically strong payers** whose Zeraki Finance records show consistent, timely payment across multiple terms - but who need help this particular term. The data already exists. No instalment plan required.
+- **Plan-adherent parents** from Layer 1 who've demonstrated commitment (3+ scheduled payments made) but fell short due to a disruption.
+
+**Key design decisions:**
+- Money goes directly to the school's paybill - never touches the parent's M-Pesa
+- Underwritten by actual fee payment behaviour from Zeraki Finance - not phone metadata
+- Interest dramatically lower than digital lenders
+- Not just for struggling families - any parent can have a bad term, and the data should reflect their full history, not just this moment
+
+## Why This Works
+
+Layer 1 creates **new behavioural data** that doesn't exist today - not just "did they pay eventually" but "did they stick to a weekly commitment?" That data, combined with the **historical payment records** Zeraki Finance already holds, powers Layer 2.
+
+Layer 2 uses both signals - years of payment history AND recent plan adherence - to offer credit at the **exact moment it's needed**, to people who've **earned it through their track record**, for a **specific purpose**, through a channel they **already use**. A parent with 6 terms of perfect payment history doesn't need to go through an instalment plan to prove they're creditworthy. The data is already there.
+
+Neither layer assumes parents are forgetful or irresponsible. Layer 1 adds structure to what already happens informally. Layer 2 adds a safety net for when income doesn't match obligations - which is the actual problem.
 
 ## Repo Structure
 
 ```
-├── research/                    # Market research, competitive analysis, data
-│   ├── 01-problem-sizing.md         # The school fees crisis in numbers
-│   ├── 02-competitive-landscape.md  # Who else is trying to solve this
-│   ├── 03-zeraki-platform-audit.md  # What Zeraki has today and what's missing
-│   ├── 04-parent-payment-behaviour.md # How parents actually pay fees
-│   └── 05-regulatory-landscape.md   # Lending licenses, CBK sandbox, consumer protection
+├── research/
+│   ├── 01-problem-sizing.md
+│   ├── 02-how-fees-actually-work.md
+│   ├── 03-zeraki-platform-audit.md
+│   ├── 04-competitive-landscape.md
+│   └── 05-regulatory-landscape.md
 │
-├── product/                     # Core product documents
-│   ├── 01-prd.md                    # Full product requirements document
-│   ├── 02-user-personas.md          # Parent personas based on payment behaviour
-│   ├── 03-user-stories.md           # Epics and user stories
-│   ├── 04-metrics-framework.md      # KPIs, success metrics, tracking plan
-│   └── 05-risks-and-mitigations.md  # What could go wrong
+├── product/
+│   ├── 01-prd-layer1-plans.md
+│   ├── 02-prd-layer2-credit.md
+│   ├── 03-user-personas.md
+│   ├── 04-user-stories.md
+│   ├── 05-metrics-framework.md
+│   └── 06-risks-and-mitigations.md
 │
-├── design/                      # UX flows, wireframes, interaction design
-│   ├── 01-sms-nudge-flows.md        # SMS message sequences and logic
-│   ├── 02-parent-app-flows.md       # App-based progress tracking UX
-│   └── 03-school-admin-dashboard.md # Bursar/admin view in Zeraki Finance
+├── design/
+│   ├── 01-parent-experience-flows.md
+│   ├── 02-school-admin-dashboard.md
+│   └── 03-sms-notifications.md
 │
-├── technical/                   # Architecture, integrations, data models
-│   ├── 01-system-architecture.md    # How this sits on Zeraki + M-Pesa paybill
-│   ├── 02-data-model.md             # Core entities and relationships
-│   ├── 03-integrations.md           # M-Pesa API, Zeraki Finance, SMS gateway
-│   └── 04-underwriting-model.md     # Credit scoring from fee payment behaviour
+├── technical/
+│   ├── 01-system-architecture.md
+│   ├── 02-data-model.md
+│   ├── 03-integrations.md
+│   └── 04-underwriting-model.md
 │
-├── go-to-market/                # Launch strategy
-│   ├── 01-pilot-plan.md             # 50-school pilot design
-│   ├── 02-school-pitch.md           # How to sell this to school administrators
-│   └── 03-partnership-strategy.md   # MFI/SACCO/Pezesha integration approach
+├── go-to-market/
+│   ├── 01-pilot-plan.md
+│   ├── 02-school-pitch.md
+│   └── 03-partnership-strategy.md
 │
-└── .claude/                     # Claude Code project context
-    └── CLAUDE.md                    # Project brief for Claude Code sessions
+└── .claude/
+    └── CLAUDE.md
 ```
 
-## Key Product Decisions
+## Author
 
-| Decision | Choice | Rationale |
-| --- | --- | --- |
-| Payment mechanism | Existing school paybill + student reg number | Zero behaviour change for parents; school already reconciles via Zeraki Finance |
-| Primary channel | SMS (not app-first) | Majority of target parents don't use the Zeraki app; SMS reaches everyone |
-| Savings model | Pre-payment to school account, not separate wallet | Avoids pooled fund regulation; money goes directly to school; builds trust |
-| Credit model | Fee deferral (school-funded) first, MFI top-up second | Deferral requires no lending license; MFI partnership adds complexity |
-| Targeting | Parents with 2+ terms of Zeraki Finance payment history | Need behavioural baseline to segment and nudge effectively |
+Yvonne Gitata - Product Manager
+[Portfolio](https://www.notion.so/Hey-I-m-Yvonne-2ff02075289d80e49bf2eafe9b44a319) | [LinkedIn](https://www.linkedin.com/in/yvonne-gitata-3b7151237/) | [Medium](https://wamuyugitata.medium.com/) | [GitHub](https://github.com/GitataY)
 
-## Context
-
-This is one project in a broader portfolio exploring embedded finance opportunities for underserved populations in East Africa. Other case studies in progress:
-
-- **Fuliza for electricity** —> prepaid utility credit for Kenya Power customers
-- **Kwendo financial identity** —> work-data-to-credit pipeline for casual workers
+---
 
 ## How to Use This Repo
 
@@ -74,4 +112,4 @@ If you're **Zeraki**: I'd love to talk. This product builds on what you've alrea
 
 ---
 
-*Built with research, not assumptions. All market data is sourced and cited in the research documents.*
+*Built with research, not assumptions. The first assumption we killed was that parents forget to pay school fees - they don't. It's an income problem, not a memory problem.*
