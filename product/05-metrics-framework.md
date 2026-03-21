@@ -86,18 +86,22 @@ The gap between decline rate and no-response rate is informative. High explicit 
 |--------|-----------|-----------------|----------------|
 | Repayment completion rate | % of credit arrangements fully repaid within the agreed timeframe | 85% | Completed / total active |
 | On-time repayment rate | % of weekly repayments made on or before the due date | 75% | On-time payments / total scheduled |
-| Default rate | % of arrangements where any instalment is 14+ days overdue | Below 10% | Overdue arrangements / total active |
+| Default rate | % of arrangements where any instalment is 30+ days overdue | Below 10% | Overdue arrangements / total active |
 | Total loss rate | % of credit amount not recovered by end of term | Below 5% | Unrecovered amount / total credit disbursed |
-| Average days to full repayment | Mean calendar days from credit activation to final payment | Within agreed period (28-42 days) | Date of final payment minus activation date |
+| Average days to full repayment | Mean calendar days from credit activation to final payment | Within agreed period (28-56 days) | Date of final payment minus activation date |
+| Disbursement speed | Time from parent acceptance to lender paying school paybill | Under 24 hours | System timestamps |
 
 ### Financial Metrics (Does the model work economically?)
 
 | Metric | Definition | Target (Pilot) | How to measure |
 |--------|-----------|-----------------|----------------|
-| Total credit outstanding | Sum of all active, unrepaid credit | Below school-set limits | Zeraki Finance dashboard |
-| School exposure as % of term fees | Total credit outstanding / total expected term fees | Below 3% | Calculation |
-| Revenue per credit arrangement (Option B only) | Origination fee or revenue share earned per arrangement | Track for V2 modelling | Partner agreement terms |
-| Cost of credit to parent (Option A) | Zero | Zero (validation that no hidden charges exist) | Audit |
+| Total credit disbursed to school | Sum of all lender disbursements to school paybill this term | Track | Zeraki Finance settlement records |
+| Total credit outstanding | Sum of all active, unrepaid credit across all arrangements | Track | Zeraki Finance Credit page |
+| Lender approval rate | % of Zeraki-eligible parents approved by the lending partner | 70%+ | Lender API responses |
+| Waterfall settlement accuracy | % of lender shares forwarded correctly and on time | 99%+ | Settlement reconciliation logs |
+| Zeraki revenue per arrangement | Data and distribution fee earned per credit arrangement | Track for unit economics | Partnership agreement terms |
+| Revenue per school per term | Total Zeraki credit revenue per school per term | Validate positive unit economics | Calculation: arrangements x fee |
+| Cost of credit to parent | Total cost including service fee, expressed as flat % | Below 5% | Audit of terms offered |
 
 ---
 
@@ -106,6 +110,8 @@ The gap between decline rate and no-response rate is informative. High explicit 
 | Metric | Definition | Target | How to measure |
 |--------|-----------|--------|----------------|
 | Payment matching accuracy | % of M-Pesa payments correctly matched to the right student and plan | 99.5% | Manual audit of sample transactions |
+| Waterfall allocation accuracy | % of credit repayment amounts correctly split and forwarded to the lending partner | 99.5% | Settlement reconciliation vs lender records |
+| Settlement timeliness | % of daily batch settlements completed on time | 99% | Settlement log timestamps |
 | Manual reconciliation rate | % of total payments recorded manually (cash + bank) vs automatically (M-Pesa) | Track | Payment method field |
 | SMS delivery rate | % of messages successfully delivered to parent phones | 95% | SMS gateway delivery reports |
 | App engagement (plan users) | % of parents on plans who check the app at least once during the term | Track | App analytics |
@@ -151,7 +157,7 @@ Track whether parents who start on plans graduate to paying in full without plan
 | School bursar | Plan adherence summary + credit status | Weekly (automated in Zeraki Finance) |
 | School headteacher/board | Term performance report (collection rates, sent-home incidents, plan/credit summary) | Per term |
 | Zeraki leadership | Pilot performance summary with go/no-go recommendation | Per term |
-| Lending partner (Option B, V2) | Portfolio performance (disbursed, repaid, default rate) | Monthly |
+| Lending partner | Portfolio performance (disbursed, repaid, default rate, settlement reconciliation) | Monthly |
 
 ---
 

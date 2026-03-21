@@ -9,8 +9,8 @@
 | E3: Plan tracking and reminders | Layer 1 | Payments are matched to plans, reminders are sent, dashboard updates | Mr. Kamau, all parent personas |
 | E4: Manual reconciliation | Layer 1 | Cash and bank payments are recorded against plans | Mr. Kamau |
 | E5: Credit eligibility and offers | Layer 2 | System identifies eligible parents and delivers offers | Wanjiku, Mwende, Otieno |
-| E6: Credit acceptance and repayment | Layer 2 | Parent accepts credit, school is paid, repayment is tracked | All parent personas, Mr. Kamau |
-| E7: School controls and oversight | Both | School configures limits, monitors progress, manages exceptions | Mr. Kamau |
+| E6: Credit acceptance, disbursement, and repayment | Layer 2 | Parent accepts, lender pays school, repayment flows through waterfall | All parent personas, Mr. Kamau |
+| E7: School controls and oversight | Both | School enables/disables credit, monitors settlement, views term reports | Mr. Kamau |
 
 ---
 
@@ -203,13 +203,13 @@
 
 ### E5-S2: School enables credit offers
 **As a** bursar,
-**I want to** review the eligible parent list and decide whether to enable credit offers,
-**So that** the school controls who receives offers and how much exposure the school takes on.
+**I want to** review the eligible parent list and decide whether to enable credit offers this term,
+**So that** the school controls who receives offers and protects the school-parent relationship.
 
 **Acceptance criteria:**
 - Bursar can enable offers for all eligible parents, for specific parents only, or disable for the term
-- School-level limits are enforced: maximum concurrent arrangements, maximum amount per student
-- If limits would be exceeded, the system warns the bursar before enabling
+- Bursar can choose auto-offer (all eligible parents receive offers automatically) or manual (bursar approves each individually)
+- The school bears no financial risk. Enabling offers does not create any school exposure. A lending partner provides the capital.
 
 ### E5-S3: Parent receives credit offer via the app
 **As a** parent who qualifies for a fee top-up,
@@ -218,7 +218,8 @@
 
 **Acceptance criteria:**
 - Offer appears below the fee balance on the app home screen
-- Shows: maximum amount available, repayment schedule, total cost (zero for Option A), what happens if I accept (money goes to school)
+- Shows: maximum amount available, repayment schedule, total cost (including service fee), what happens if I accept (money goes to school, I repay to same paybill)
+- Consent screen explains data sharing with credit partner and CRB reporting before I can accept
 - Clear "Accept" and "No thanks" buttons
 - If I decline, the offer disappears and does not return this term
 
@@ -229,45 +230,68 @@
 
 **Acceptance criteria:**
 - Initial SMS: brief offer with a "Reply INFO for details" prompt
-- Details SMS: amount, repayment schedule, total cost, "Reply YES to accept or NO to decline"
-- If parent replies NO or doesn't reply within 7 days, offer expires. No follow-up sent.
+- Details SMS: amount, repayment schedule, total cost (including service fee), "Same paybill, same account. Reply YES to apply."
+- Consent SMS (when parent replies YES): explains data sharing with credit partner and CRB reporting. "Reply CONFIRM to proceed or CANCEL to stop."
+- Two-step consent (YES then CONFIRM) is required for SMS. This is a credit product with CRB implications.
+- If parent replies CANCEL or doesn't reply within 7 days, offer expires. No follow-up sent.
 
 ---
 
 ## Epic 6: Credit Acceptance and Repayment
 
-### E6-S1: Parent accepts credit (Option A, school-funded)
+### E6-S1: Parent accepts credit and school is paid
 **As a** parent who accepts a fee top-up offer,
-**I want to** have the arrangement activated immediately so my child's fee balance is updated,
+**I want to** have the school paid directly by the lending partner so my child's fee balance is settled,
 **So that** the school sees me as covered and my child stays in school.
 
 **Acceptance criteria:**
-- Upon acceptance, the student's fee record in Zeraki Finance is updated: outstanding balance is split into "paid" (from the top-up) and "credit repayment due"
+- Upon acceptance, Zeraki shares the parent's payment history with the lending partner via API (consent already captured)
+- Lending partner makes a credit decision (approve/decline/adjusted amount). Target: near-instant automated decisioning.
+- If approved: lender disburses the top-up amount to the school's M-Pesa paybill, referencing the student's registration number
+- Zeraki Finance reconciles the disbursement as a payment against the student's fee balance
 - A repayment schedule is created with weekly amounts and due dates
-- Parent receives confirmation SMS with full schedule
+- Parent receives confirmation SMS from the school sender ID with the full schedule, including total cost and "Pay to [SCHOOL_PAYBILL], Acc [REG]"
+- If declined: parent receives a neutral SMS from the school sender ID. No reason given. "This does not affect your child's enrolment."
 - The app shows the credit arrangement alongside any existing plan
 
-### E6-S2: Credit repayment tracking
+### E6-S2: Waterfall payment allocation
+**As the** system,
+**When** a payment arrives at the school's M-Pesa paybill for a student with an active credit arrangement,
+**I should** allocate the lender's share and forward it to the lending partner, with the remainder going to the school.
+
+**Acceptance criteria:**
+- System checks incoming payment against active credit arrangements by student registration number
+- If active credit: allocate the weekly repayment amount to the lender. Forward via B2B transfer.
+- Any amount above the weekly repayment goes to the school
+- If payment is less than the weekly repayment: full payment goes to the lender. Parent is behind on schedule.
+- If no active credit: full amount goes to the school as normal
+- Manual payments (cash/bank deposit) recorded by the bursar follow the same waterfall logic
+- Settlement with the lending partner happens daily (batch)
+- All allocations are logged and visible to the bursar on the Credit page
+
+### E6-S3: Credit repayment tracking
 **As a** bursar,
 **I want to** see credit repayment progress for all students with active arrangements,
-**So that** I can monitor the school's exposure and follow up on overdue repayments.
+**So that** I have visibility into the credit activity at my school, even though the school bears no financial risk.
 
 **Acceptance criteria:**
-- Dashboard widget: total active credit, total repaid, total outstanding, number on track, number overdue
-- Per-student view: credit amount, repaid, remaining, payments made vs scheduled, status
-- Overdue flag after 3 days, escalation flag after 14 days
+- Credit page shows: total active arrangements, total disbursed to school, total repaid, total outstanding, number on track, number overdue
+- Per-student view: credit amount, repaid, remaining, payments made vs scheduled, status, funded-by column
+- Overdue flag after 3 days. CRB warning flag after 21 days.
+- This is informational only. No "chase payment" buttons. Reminders are automated by the system. Repayment is between the parent and the waterfall.
 
-### E6-S3: Credit repayment reminders
+### E6-S4: Credit repayment reminders
 **As a** parent with an active credit arrangement,
-**I want to** receive weekly reminders of my repayment amount and due date,
-**So that** I stay on track.
+**I want to** receive weekly reminders from my school with the amount due and paybill details,
+**So that** I stay on track with my repayments.
 
 **Acceptance criteria:**
-- Same design principles as Layer 1 reminders: school sender ID, one per due date, factual tone
-- Includes: amount due, remaining balance, paybill and account number
-- Overdue notice sent once, 3 days after a missed payment
+- All reminders come from the school sender ID. The lending partner never contacts the parent directly.
+- Includes: amount due, remaining balance, school paybill number and account number, progress (e.g., "Payment 2 of 4")
+- Overdue notice sent once, 3 days after a missed payment, from school sender ID
+- CRB warning sent at 21 days overdue, from school sender ID, before 30-day CRB listing
 
-### E6-S4: Credit fully repaid
+### E6-S5: Credit fully repaid
 **As a** parent who has completed all credit repayments,
 **I want to** receive confirmation that the arrangement is closed,
 **So that** I know I have no remaining obligations.
@@ -281,25 +305,26 @@
 
 ## Epic 7: School Controls and Oversight
 
-### E7-S1: Set school-level credit limits
+### E7-S1: Enable or disable credit offers
 **As a** bursar or headteacher,
-**I want to** set maximum credit exposure for the school,
-**So that** we don't offer more deferrals than we can absorb.
+**I want to** control whether credit offers are sent to parents at our school,
+**So that** the school can decide whether to participate in the credit programme each term.
 
 **Acceptance criteria:**
-- Settings in Zeraki Finance: maximum concurrent credit arrangements, maximum amount per student, maximum total outstanding
-- System prevents new offers from being sent if limits would be exceeded
-- Limits can be adjusted mid-term
+- Toggle in Zeraki Finance Settings: "Enable credit offers this term: On/Off"
+- Off by default. School must actively opt in each term.
+- When disabled: no new offers are sent. Existing arrangements continue as normal (school was already paid, repayment continues through the waterfall).
+- Choice between auto-offer (all eligible parents) or manual (bursar approves each individually)
 
-### E7-S2: Pause all credit offers
+### E7-S2: View waterfall settlement detail
 **As a** bursar,
-**I want to** temporarily pause all credit offers if the school's cash flow is too tight,
-**So that** we can stop taking on exposure without disabling the feature permanently.
+**I want to** see how incoming payments are being split between the school and the lending partner,
+**So that** I can trust the system and verify the correct amounts are being forwarded.
 
 **Acceptance criteria:**
-- One-click "Pause Credit" toggle in Zeraki Finance settings
-- When paused: no new offers are sent, existing arrangements continue as normal
-- Can be re-enabled at any time
+- Credit page shows a settlement log: each payment received, how it was allocated (school share vs lender share), date forwarded
+- Totals match the lending partner's records (reconciliation)
+- Bursar can export the settlement log as CSV
 
 ### E7-S3: Term-end summary report
 **As a** bursar,

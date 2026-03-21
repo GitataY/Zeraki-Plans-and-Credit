@@ -20,7 +20,7 @@ These personas represent distinct payment behaviour patterns that would exist in
 
 **Layer 1 (Plans):** Wanjiku probably doesn't need a formal plan most terms. She pays relatively quickly. But she might request a plan during a tough term (e.g., January when December spending has drained her savings). She'd request via the app, selecting a 4-week plan. The bursar would auto-approve given her strong history.
 
-**Layer 2 (Credit):** Wanjiku qualifies through Path 1 (historically strong payer). If she has a bad term, she'd see a credit offer in the app. She'd likely accept a small top-up (KES 3,000-4,000) and repay within 2-3 weeks. Low risk. This is the parent who "always pays but sometimes needs a bridge."
+**Layer 2 (Credit):** Wanjiku qualifies through Path 1 (historically strong payer). If she has a bad term, she'd see a credit offer in the app. She'd likely accept a small top-up (KES 3,000-4,000) and repay to the same school paybill within 2-3 weeks. The lending partner is invisible to her. Low risk. This is the parent who "always pays but sometimes needs a bridge."
 
 **Channel preference:** App primary, SMS secondary. She checks the app for grades anyway, so fee plans and credit offers in the app feel natural.
 
@@ -42,7 +42,7 @@ These personas represent distinct payment behaviour patterns that would exist in
 
 **Layer 1 (Plans):** Otieno is the core user for Zeraki Plans. He already pays in instalments informally. A formal plan gives him structure and protects his child from being sent home. He'd likely select a plan via SMS (he doesn't regularly use the Zeraki app). A weekly plan of 4 x KES 3,375 matches his income pattern on good weeks.
 
-**Layer 2 (Credit):** Otieno qualifies through Path 2 (plan-adherent) if he makes 3+ of his 4 scheduled payments. If he hits Week 4 and is KES 3,000 short because work dried up, a top-up offer via SMS could cover the gap. He'd accept. Repayment would happen over the next 3-4 weeks as work picks back up.
+**Layer 2 (Credit):** Otieno qualifies through Path 2 (plan-adherent) if he makes 3+ of his 4 scheduled payments. If he hits Week 4 and is KES 3,000 short because work dried up, a top-up offer via SMS could cover the gap. He'd accept via the two-step SMS flow. A lending partner pays the school directly, and Otieno repays to the same school paybill over the next 3-4 weeks as work picks back up. He never knows or cares who the lending partner is.
 
 **Channel preference:** SMS only. He won't download the app or check it regularly. Everything needs to work through text messages.
 
@@ -87,9 +87,9 @@ These personas represent distinct payment behaviour patterns that would exist in
 
 **Layer 2 (Credit):** This is the term her husband lost his job. Or she had a medical emergency. Or a family member passed away and the funeral costs were significant. Suddenly, KES 60,000 in Week 1 is impossible. She has KES 40,000 and is KES 20,000 short.
 
-Mwende qualifies immediately through Path 1 (historically strong payer). Her 3 years of perfect payment history means the system doesn't hesitate. She sees a credit offer in the app for up to KES 15,000 (capped at 30% of fees or KES 5,000 per child). She accepts, the school is paid, and she repays over 4 weeks as her salary comes in.
+Mwende qualifies immediately through Path 1 (historically strong payer). Her 3 years of perfect payment history means the system doesn't hesitate. She sees a credit offer in the app for up to KES 15,000 (capped at 30% of fees or KES 5,000 per child). She accepts, the school is paid, and she repays over 4 weeks as her salary comes in. She pays to the same school paybill she always uses. She never interacts with the lending partner behind the scenes.
 
-Without this product, Mwende would have taken a bank loan or Fuliza to cover the shortfall. With it, she handles it through the school at zero interest.
+Without this product, Mwende would have taken Fuliza or a Tala loan to cover the shortfall. With it, she handles it through the school at a fraction of the cost (a small flat service fee vs 15%+ monthly interest).
 
 **Channel preference:** App. She's digitally comfortable and would prefer to manage everything through the interface.
 
@@ -120,10 +120,10 @@ Without this product, Mwende would have taken a bank loan or Fuliza to cover the
 - Follows up only with parents who are behind on their plans or have no plan at all
 
 **Layer 2 (Credit):**
-- Reviews the list of eligible parents and enables credit offers
-- Sets school-level limits (e.g., maximum 30 active credit arrangements, KES 3,000 cap)
-- Monitors repayment progress on the dashboard
-- Escalates overdue cases to the headteacher only when automated reminders haven't worked
+- Reviews the list of eligible parents and enables credit offers for the term
+- Monitors repayment progress on the Credit page (informational only - the school's fees are already paid by the lending partner)
+- Sees which parents have active credit arrangements and whether they're on track, but doesn't chase repayments (reminders are automated, repayment flows through the waterfall)
+- Can see total amount disbursed to the school through credit this term
 
 **What changes for him:**
 - Week 1 phone calls drop because parents can request plans through the app or SMS instead of calling him
