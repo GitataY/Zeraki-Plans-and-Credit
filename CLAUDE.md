@@ -38,8 +38,18 @@ The README also describes planned directories (`technical/`, `go-to-market/`) th
 | `04-competitive-landscape.md` | Tala, Fuliza, SMS lenders — why existing credit products fail this use case |
 | `05-regulatory-landscape.md` | CBK licensing requirements, CRB reporting, data protection (PDPA), consumer protection |
 
-### Product & Design (stubs awaiting content)
-The `product/` and `design/` files were created but are largely empty — these are the next documents to write.
+### Product (largely complete)
+| File | Contents |
+|------|----------|
+| `01-prd-layer1-plans.md` | Full PRD for Zeraki Plans — problem, requirements, features, scope |
+| `02-prd-layer2-credit.md` | Full PRD for Zeraki Credit — underwriting logic, disbursement flow, eligibility |
+| `03-user-personas.md` | Four parent personas (Wanjiku, Otieno, Mama Amani, informal earner) + bursar persona |
+| `04-user-stories.md` | Epics E1–E6 with acceptance criteria across both layers |
+| `05-metrics-framework.md` | North star metric + Layer 1/2 adoption, engagement, and health metrics with pilot targets |
+| `06-risks-and-mitigations.md` | Stub — not yet written |
+
+### Design (stubs awaiting content)
+`design/01-parent-experience-flows.md` and `design/02-school-admin-dashboard.md` are empty — these are the next documents to write.
 
 ## Key Context for Writing
 
